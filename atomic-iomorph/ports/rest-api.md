@@ -33,7 +33,7 @@ Examples:
 
 ## API Design
 
-Some principles to keep in mind:
+[Some principles](https://research.google/pubs/pub32713/) to keep in mind:
 
 * Plasticity.  You need to be able to change, and versioning is a huge part of making this possible.
 * Communication Patterns.
