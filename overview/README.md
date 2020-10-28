@@ -15,7 +15,7 @@ This reference is organized in the following major sections:
 
 The key perspective that acts as the foundation for the Iomorphic Architecture is the idea of a _domain system_.  Eric Evans, in Domain-Driven Design, originates this idea of having code follow a business domain closely, but I think the idea is most easily illustrated in the Hexagonal Architecture:
 
-HEXARCH IMAGE TODO
+![](../.gitbook/assets/hexarch.png)
 
 The point, of course, is that no matter how a system communicates with other systems, _**conceptually**_, there is some blob of domain logic that represents the core of the system itself.  These blobs, conceptually, _are_ the systems, and everything else is merely the implementation detail of how we wire them together to communicate with each other.  Consider the following:
 
