@@ -19,7 +19,7 @@ The key perspective that acts as the foundation for the Iomorphic Architecture i
 
 The point, of course, is that no matter how a system communicates with other systems, _**conceptually**_, there is some blob of domain logic that represents the core of the system itself.  These blobs, conceptually, _are_ the systems, and everything else is merely the implementation detail of how we wire them together to communicate with each other.  Consider the following:
 
-HTTP vs. FUNCD SYSTEM WIRING IMAGE TODO
+![](../.gitbook/assets/comparison.png)
 
 In designing a new _architecture_, we started by looking at the inevitable problems that any organization will face when tackling complex problems:
 
