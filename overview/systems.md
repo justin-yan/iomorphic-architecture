@@ -6,9 +6,9 @@ It has all of the same requirements as a "Service": a public API, encapsulation,
 
 The important thing to note is that if a System starts off by using function dispatch to communicate and eventually switches to exposing a REST API - conceptually, it is still the _**same**_ System.  Consider the following:
 
-SYSTEM COMPARISON IMAGE TODO
+![](../.gitbook/assets/comparison.png)
 
-Even if we communicate with "pricing" by _importing_ it and using _function dispatch_, it is a distinct conceptual entity.  **Every domain is represented by a System**, but **every System may independently choose** _**which**_ **Isolation Mechanism it wants to use to encapsulate its internals**.  This decouples the concerns of how to _represent_ domains from how to _isolate_ them.
+Even if we communicate with the dependency by _importing_ it and using _function dispatch_, it is a distinct conceptual entity.  **Every domain is represented by a System**, but **every System may independently choose** _**which**_ **Isolation Mechanism it wants to use to encapsulate its internals**.  This decouples the concerns of how to _represent_ domains from how to _isolate_ them.
 
 ## Composition
 
@@ -18,13 +18,13 @@ Systems are only as useful as their ability to talk to each other, for which we 
 
 **Peering** is what most people are familiar with.  System **Peers** are allowed to talk to each other, through whichever communication mechanisms they each support.  The only requirement is that in a given peering group, the _same_ Isolation Mechanism is used to separate all of the systems.
 
-PEERING IMAGE TODO
+![](../.gitbook/assets/peering.png)
 
 ### Hierarchy
 
 A **Hierarchical** relationship is when one System \(the parent\) _encapsulates_ another System \(the child\).  Specifically, the **parent** uses an Isolation Mechanism to prevent its **Peers** from communicating with its **Children**.  The **children** of a System do not have any requirements for their inter-relationships - they may all be peers, they may all be standalone peering groups, or somewhere in the middle.
 
-HIERARCHY IMAGE TODO
+![](../.gitbook/assets/hierarchy.png)
 
 ### Infrastructure
 
@@ -32,7 +32,7 @@ There is one main exception, which are the **Infrastructure** systems that need 
 
 The primary rule is the **Infrastructure** System itself may directly communicate with _**any descendant**_ of its parent.  This means siblings, children of siblings, and so on and so forth.  Of course, this does not apply to _children_ of the infrastructure system, so any such interactions must go through the specific system that is the child of the domain system for which you want to provide infrastructure.
 
-INFRA IMAGE TODO
+![](../.gitbook/assets/infrastructure.png)
 
 ## Conclusion
 
