@@ -35,7 +35,7 @@ The Iomorphic Architecture starts with these problems, and then asks: how can we
 1. **Isolation of Systems**.  Scale requires abstraction and encapsulation, and any architecture must start from the perspective of systems that can be worked on in isolation.
 2. **Isomorphic under Isolation**.  Systems are built so that the _**core domain logic**_ does not change when the mechanism used to encapsulate the system from others is changed.  The architecture itself does not recommend any specific _isolation mechanisms_.  Each has its own set of trade-offs, and we leave it to the implementing organization to choose the **set** of isolation mechanisms that best meets its needs.  The architecture is intended to work _**regardless**_ of which ones you choose, and whether that choice changes.
 
-IOMORPHIC ARCH IMAGE TODO
+![](../.gitbook/assets/iomorphic.png)
 
 The Iomorphic Architecture is built up from **Iomorphs**.  Each **Iomorph** is built in the style of the Hexagonal Architecture - it is the code manifestation of a domain system, but paired with all of the **adapters** that permit communication across whichever **isolation mechanism** you have chosen.  It should be specifically noted that we do not use the term "service" here - while an Iomorph retains all of the _**encapsulation requirements**_ of a "service" \(public API as a contract, SLAs, etc.\), it does not have to run on its own VM or in its own container, and it does not have to utilize HTTP for communication with other Iomorphs.
 
