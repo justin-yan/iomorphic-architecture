@@ -1,5 +1,7 @@
 # Introduction
 
+**Status: First Draft.  Code Examples, Images are coming, followed by editing and a few more sections.**
+
 The Iomorphic Architecture is an **application** _****_**architecture** - an alternative to MVC and Microservices.  The goal is to get the benefits of both microservices _and_ monoliths while simultaneously making it as easy as possible to change how systems communicate with each other.  This is captured in the two core principles:
 
 1. **Isolation of Systems**.  OOP, Actor Systems, and Microservices have taught us that Encapsulation is the primary way to achieve organizational scale, and we take the viewpoint that **Systems** \(not _Services_, because a single web service could conceptually be multiple systems\) are the primary building blocks that require isolation.
