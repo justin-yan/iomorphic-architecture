@@ -4,7 +4,7 @@
 * [Overview](overview/README.md)
   * [Inspiration](overview/inspiration.md)
   * [Isolation and Communication](overview/isolation-and-communication.md)
-  * [Systems](overview/systems.md)
+  * [Iomorphs](overview/systems.md)
 * [Atomic Iomorph](atomic-iomorph/README.md)
   * [Domain](atomic-iomorph/domain.md)
   * [Ports](atomic-iomorph/ports/README.md)
