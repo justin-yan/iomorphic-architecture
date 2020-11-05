@@ -11,6 +11,7 @@ Examples
     /types
         DomainType.code
     DomainSystem.code
+    OtherCode.code
 ```
 
 ```text
@@ -28,9 +29,15 @@ DomainSystem {
 }
 ```
 
-## DomainSystem
+## Domain
 
+This is where the pure representation of your system lives, independent from technology choices such as which database to use, or whether to use REST or GRAPHQL.  There are no hard-and-fast rules for how much functionality a single Iomorph should contain.  Ultimately, this will depend on a variety of factors, ranging from the specifics of the problem you're working on, the size and skill-set of your team \(which governs how they will work best together\), and the product and technology constraints you have to work within.  There are a few primers that can provide pretty good heuristics:
 
+* Eric Evans' [Domain Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design)
+* OOP's SOLID
+* Martin Fowler's Clean Code
+
+Many resources like this will prove useful for thinking about how to arrange and size your Iomorphs, but it's important to remember that there is no single solution that works universally.  The point of the Iomorphic architecture is to make it easy to recover from the mistakes that will inevitably be made, and to facilitate the evolution of systems when the world changes around them.
 
 ## Types
 
