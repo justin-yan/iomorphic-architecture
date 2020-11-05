@@ -1,6 +1,8 @@
 # Introduction
 
-**Status: Rough Draft.  Code Examples are next.**
+**Status: Rough Draft.**
+
+**Roadmap: Code Examples -&gt; per-language support requirements -&gt; orchestration -&gt; isolation mechanism provisioning -&gt; "stacks"**
 
 The Iomorphic Architecture is an application _****_architecture ****designed to be an alternative for MVC and Microservices.  If you're tired of dealing with hard-to-change Monoliths or having debates about "how big should a service be?" and drowning under the operational burden of Microservices, the Iomorphic Architecture gives you a way to seamlessly blend the best of both worlds so you can focus on your real problems.  The architecture revolves around two core principles:
 
