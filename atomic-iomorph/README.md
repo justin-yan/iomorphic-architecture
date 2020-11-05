@@ -55,8 +55,9 @@ Before we dig into each of those layout sections in detail, it's important to fi
 * **All interfaces** \(both domain and ports\) must follow the following rules:
   * Function input and return values must be defined with language primitives or the **types of the domain** \(the`domain.types` package\).
     * This ensures that concrete details of a communication mechanism don't leak into the rest of the application.
-  * _All_ return values must be wrapped with a monadic error handler.  Scala's `Try[A]`, Kotlin's `Result[A,E]`, Haskell's `Error`, and so on.
-    * Not only does this provide error handling rigor, it forces you to transform your errors into _domain errors_ \(e.g. avoiding SQLException propagating all over your codebase\), and it prepares you for when your system moves from function dispatch to HTTP.
+  * _All_ return values must use an error container.  Scala's `Try[A]`, Kotlin's `Result[A,E]`, Haskell's `Error`, and so on.  This does many things:
+    * It forces you to transform your errors into _domain errors_ \(e.g. avoiding SQLException propagating all over your codebase\).
+    * It avoids assumptions about function totality, preparing you for the transition to a communication mechanism that can fail, like HTTP.
 * **ExecutionContext** is where the application is actually wired together into the main function that actually gets executed.
   * **Adapters** are injected into the **DomainSystem** as concrete implementations of the **Ports**.
   * Concerns like _config_ and _environment switching_ \(dev/test/prod\) are handled here.
