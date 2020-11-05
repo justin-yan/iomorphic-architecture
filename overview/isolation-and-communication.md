@@ -9,18 +9,18 @@ An **Isolation Mechanism** is a collection of technical choices that provides _s
 * **Bare Metal Isolation**: Running services on their own physical hardware can isolate effects like CPU steal and security risks of VM 0-days
 * **VPC and Network Isolation**: Services can be hidden from each other by residing on their own _private networks_ that aren't visible to the external world except through a Gateway.
 
-There are plenty more isolation mechanisms, and each of these has an infinite number of flavors: using containers in VMs, using containers but with a variety of different settings that change the degree of what is actually isolated, so on and so forth.
+There are an infinite number of varieties and flavors: putting containers in VMs, running sidecar proxies next to containers, putting load balancers in front of VM fleets - on and on.
 
-When an organization uses an Isolation Mechanism, they _also_ choose the **Communication Mechanisms** that are considered _appropriate_ for communicating _across_ the Isolation Mechanism.  Some examples of this might include:
+When an organization uses an Isolation Mechanism, they _also_ choose the **Communication Mechanisms** that they consider _appropriate_ for communicating _across_ the Isolation Mechanism.  Some examples of this might include:
 
 * **Public Function Dispatch**
 * **Inter-Process Communication** \(e.g. going through a file or local OS sockets\)
 * **TCP/IP**
 
-There are now a few critical observations to make:
+There are a few critical observations to make here:
 
-1. There is not an "always correct" Isolation Mechanism to use.  Each mechanism has meaningful advantages and disadvantages, and an organization should **select the set of isolation mechanisms that best meet its current and future needs**, and then decide **how their domains should map to the different isolation mechanisms**.  This is often a decision about mostly _human_ factors: What is the substructure of the business problem we are solving that will empower individuals and teams to effectively solve problems that matter?
-2. The mapping of a domain to an isolation mechanism is a **point-in time decision**.  As the world changes, that mapping will need to change, which means an architecture capable of evolving with a rapidly growing organization **must be able to easily handle the migration of a domain to different isolation mechanisms**.
+1. There is no such thing as a "universally correct" Isolation Mechanism.  Each mechanism will have advantages and disadvantages, and for each system, an organization should select the mechanism that best meets their needs.  This is often a decision that turns on non-technical factors: which technologies will empower individuals and teams to effectively solve problems that matter?
+2. Just as two systems may want two different isolation mechanisms, a single system at _two different times_ may want two different isolation mechanisms.  As the world changes, a system may need to evolve, split, or isolate in order to accomodate changing requirements, and an architecture should facilitate **the migration of a system to different isolation mechanisms**.
 
 There are a huge variety of case studies from around the internet that illustrate this point:
 

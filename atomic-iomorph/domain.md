@@ -11,6 +11,7 @@ Examples
     /types
         DomainType.code
     DomainSystem.code
+    OtherCode.code
 ```
 
 ```text
@@ -28,9 +29,24 @@ DomainSystem {
 }
 ```
 
-## DomainSystem
+## Domain
 
+This is where the pure representation of your system lives, independent from technology choices such as which database to use, or whether to use REST or GRAPHQL.
 
+There are no hard-and-fast rules for how much functionality a single Iomorph should contain and will depend on a variety of factors:
+
+* The substructure of the problem you're solving
+* Size and skill-set of team, which affects how they will work together most effectively
+* Product and technology constraints.  An example:
+  * **Transactional Atomicity**.  Databases are [_vendored iomorphs_](../iomorph-composition/vendor.md#persistence) and therefore, a transaction in a single database is not actually allowed to span two different Iomorphs.  If you want transactional behavior, you'll need to encapsulate all of the relevant domains in a single Iomorph.
+
+There are a few primers that can provide pretty good heuristics:
+
+* Eric Evans' [Domain Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design)
+* OOP's SOLID
+* Martin Fowler's Clean Code
+
+Many resources like this will prove useful for thinking about how to arrange and size your Iomorphs, but it's important to remember that there is no single solution that works universally.  The point of the Iomorphic architecture is to make it easy to recover from the mistakes that will inevitably be made, and to facilitate the evolution of systems when the world changes around them.
 
 ## Types
 

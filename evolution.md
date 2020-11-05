@@ -10,23 +10,23 @@ There are a few main classes of evolution that we consider:
 
 For each of these, we'll consider the following operations:
 
-* Addition: new functionality being added.
-* Deletion: removing functionality.
-* Partition: splitting an Iomorph into two.
-* Agglomeration: combining two Iomorphs into one.
+* Add \(functionality\)
+* Delete \(functionality\)
+* Split \(one Iomorph becomes two\)
+* Combine \(two Iomorphs become one\)
 
 ## Atomic
 
 This is the easy case, and is one of the primary benefits of keeping an atomic isolation mechanism such as programming language modules for as long as possible:
 
-* Addition: All changes in clients and servers can simply be made simultaneously and handled with a single atomic deployment.
-* Deletion: Uncalled code can be simply deleted, while called code will just need to be migrated to an alternative.
-* Partition: Create a child Iomorph, with a new DomainSystem.  Import into parent.  Copy functionality into child, including entire ports if necessary.  Replace implementation in parent with dispatch to child.
-* Agglomeration: Copy all ports and DomainSystem from one Iomorph to the other.  Combine methods into single DomainSystem and eliminate duplication.
+* Add: All changes in clients and servers can simply be made simultaneously and handled with a single atomic deployment.
+* Delete: Uncalled code can be simply deleted, while called code will just need to be migrated to an alternative.
+* Split: Create a child Iomorph, with a new DomainSystem.  Import into parent.  Copy functionality into child, including entire ports if necessary.  Replace implementation in parent with dispatch to child.
+* Combine: Copy all ports and DomainSystem from one Iomorph to the other.  Combine methods into single DomainSystem and eliminate duplication.
 
 ## Distributed
 
-### Addition
+### Add
 
 To migrate in place:
 
@@ -46,12 +46,12 @@ If using a compatibility layer:
 6. Convert caller to use new Iomorph, deploy.
 7. Delete compatibility Iomorph, delete old Iomorph.
 
-### Deletion
+### Delete
 
 1. If functionality is no longer being invoked, it can simply be deleted.
 2. Otherwise, callers must be notified and re-written to stop using deprecated functionality.
 
-### Partitioning
+### Split
 
 1. Create a new Iomorph, deploy.
 2. Create port in caller, integrate to new Iomorph, deploy.
@@ -60,14 +60,14 @@ If using a compatibility layer:
 5. Inject a migration adapter to rotate between new Iomorph adapter & domainsystem adapter
 6. Delete all now unused code.
 
-### Agglomeration
+### Combine
 
 1. De-inject the port by duplicating domain logic to adapter implementation.
 2. Migrate logic out of port into domain implementation.
 
 ## Isolation Evolution
 
-Generally speaking, there are not hard-and-fast rules for evolving isolation mechanisms, because the _specifics_ will depend on the implementation details of which Isolation Mechanisms you've chosen.
+Generally speaking, there are no hard-and-fast rules for evolving isolation mechanisms, because the _specifics_ will depend on the implementation details of which Isolation Mechanisms you've chosen.
 
 Generally speaking, however, the process should not require _any change_ to the DomainSystem because we've cleanly separated the communication into a port, and therefore will look something like this:
 

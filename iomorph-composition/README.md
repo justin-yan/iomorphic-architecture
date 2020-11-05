@@ -1,6 +1,6 @@
 # Iomorphic Composition
 
-The Iomorphic Architecture shines when you start combining Iomorphs together to form a more complex application.  It ultimately follows the [System composition](../overview/systems.md#composition) methods:
+The Iomorphic Architecture shines when you start combining Iomorphs together to form a more complex application.  It ultimately follows the [Composition](../overview/iomorphs.md#composition) methods:
 
 * Hierarchy
 * Peering

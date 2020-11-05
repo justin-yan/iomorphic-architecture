@@ -2,15 +2,14 @@
 
 **Status: First Draft.  Code Examples, Images are coming, followed by editing and a few more sections.**
 
-The Iomorphic Architecture is an **application** _****_**architecture** - an alternative to MVC and Microservices.  The goal is to get the benefits of both microservices _and_ monoliths while simultaneously making it as easy as possible to change how systems communicate with each other.  This is captured in the two core principles:
+The Iomorphic Architecture is an application _****_architecture ****designed to be an alternative for MVC and Microservices.  If you're tired of dealing with hard-to-change Monoliths or having debates about "how big should a service be?" and drowning under the operational burden of Microservices, the Iomorphic Architecture gives you a way to seamlessly blend the best of both worlds so you can focus on your real problems.  The architecture revolves around two core principles:
 
-1. **Isolation of Systems**.  OOP, Actor Systems, and Microservices have taught us that Encapsulation is the primary way to achieve organizational scale, and we take the viewpoint that **Systems** \(not _Services_, because a single web service could conceptually be multiple systems\) are the primary building blocks that require isolation.
-2. **Isomorphic under Isolation**.  All of the core domain functionality of our systems will be implemented without dependencies on _how_ systems are isolated from each other, giving us the ability build our systems first, and to choose between different isolation mechanisms later.
+1. **Unified Modeling.**  We want to model _all domains_ with the same entity, which we call an **Iomorph**.  This can be as big or small as you want, you can have as many as you want, and you can nest them as deeply as you want - the important thing is that every system in your application is modeled and expressed with the same building block.
+2. **Isomorphic Communication**.  _How_ the Iomorphs communicate with each other is decoupled from the business logic.  This allows us to pick the appropriate communication mechanism \(function dispatch, HTTP, etc.\) for the job, which is what allows us to avoid questions like "how big should a service be?"  Your Iomorphs are what they are, and you can wire them together with whatever mechanism makes the most sense.
 
 ## Next Steps
 
-* If this idea is new to you, start by checking out the [Overview](overview/), which will guide you through the rest of the architecture.
+* The [Overview](overview/), which will guide you through the rest of the architecture.
   * Especially take a look at the [Prior Art](overview/inspiration.md#prior-art) for the ideas that inspired this.
-* The Iomorphic Architecture can be introduced incrementally \(starting with just one experimental domain\), so browse an example project to get started.
-* Go directly to the reference materials for the Atomic, Composition, or Evolution functions.
+* Browse an example project to get started.
 
