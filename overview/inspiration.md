@@ -2,13 +2,13 @@
 
 ## A Short History
 
-The debate between Monoliths and Microservices spans millions of blog posts and man hours, with endless back-and-forth over their respective advantages, and spawning innumerable variants, such as nanoservices or modular monoliths.  The industry has come to a tenuous understanding that monoliths are the right place to start, but that microservices are necessary for organizational scale and eventually become worth the "operational tax".
+The debate between Monoliths and Microservices spans millions of blog posts and man hours, with endless back-and-forth over their respective advantages, and spawning innumerable variants, such as nanoservices or modular monoliths.  The industry has come to a tenuous understanding that monoliths are the "right place to start", but that microservices are "necessary for organizational scale" and eventually become worth the "operational tax".
 
-After exposure to both architectures, many software engineers wonder: what is it about isolating services in different VMs and using HTTP to communicate that results in any differences from function dispatch?  Given that we often wrap our HTTP clients with an SDK that looks like we're invoking a function, why is it a struggle to accomplish the same organizational scale benefits in a monolith?
+After exposure to both architectures, many software engineers wonder: what is it about isolating services in different VMs and using HTTP to communicate that results in such a significant difference from function dispatch?  Given that we often wrap our HTTP clients with an SDK that looks like we're invoking a function, why do we struggle to accomplish the same organizational scale benefits in a monolith?
 
-Anecdotally, **microservices** do seem to have a clear advantage here.  The average service within a microservice _feels_ much less tangled than the average domain within a monolith.  A commonly proposed rationale for this is that HTTP APIs are harder to evolve due to backward-compatibility requirements and therefore discourage simultaneous changes across domains that risk creating coupling.  This feels like it misses the mark, however, as monoliths could add some artificial friction to accomplish these benefits, which we haven't really seen.
+Anecdotally, **microservices** do seem to have a clear advantage here.  The average service often _feels_ much less tangled than the average domain within a monolith.  A commonly proposed rationale for this is that HTTP APIs are harder to evolve due to backward-compatibility requirements and therefore discourage simultaneous changes across domains that risk creating coupling.  This feels like it misses the mark, however, as monoliths could add some artificial friction to accomplish these benefits, which we haven't really seen.
 
-If we focus on the technical definition of **VM-level Isolation** and **HTTP** as a communication mechanism, the _theoretical_ advantages of microservices are significant but limited to:
+If we focus on the technical definition of **VM-level Isolation** and **HTTP** as a communication mechanism, the _theoretical_ advantages of microservices are significant but should be theoretically limited to:
 
 * Polyglotism
 * Ability to tolerate conflicting dependencies between two Systems
@@ -25,14 +25,14 @@ Some of these advantages definitively assist with organizational scale.  Ease of
 
 Why do we struggle with this flexibility?  The most dominant structure for both **Monoliths** and **Services** \(within a microservice architecture\) over the last decade has been the **MVC** structure \(or whatever flavor you're using: MVT, MVVC, MMVTVT, etc.\).  The fundamental problem with this structure is that it demands, at the top level of a codebase, a functional split between model, view, and controller.  At the highest level of the architecture, it is essentially _impossible to encapsulate a **domain**_.
 
-Consider an example of the **pricing team**, trying to add their domain to this monolith.  Even if they add a perfectly encapsulated domain system in `controllers.pricing`, and express their APIs in `views.pricing`, and put all of their database accessors in `models.pricing`, it doesn't change the following two facts:
+Consider an example of a **pricing team**, trying to add their domain to a monolith.  Even if they add a perfectly encapsulated domain system in `controllers.pricing`, and express their APIs in `views.pricing`, and put all of their database accessors in `models.pricing`, it doesn't change the following two facts:
 
-1. There is no single folder `pricing` that you can open and see _all relevant code_.
+1. There is no single folder `pricing` that you can open and see _all code relevant to pricing_.
 2. When you open `models`, you will see the models for _all domains_, and more importantly, most languages don't have a mechanism for making sure that `controllers.accounting` can access `models.accounting` but not `models.pricing`.
 
-The posulate is that microservices feel better encapsulated than monoliths for this simple folder structure reason.  A microservice has a single folder that contains its logic, and its internals are _truly_ encapsulated behind an API.  A domain within a monolith, under the MVC style, has to be discovered across multiple folders commingled with other domains, and its internals are exposed to other coexisting domains.
+Our hypothesis is that microservices feel better encapsulated than monoliths simply due to its folder structure.  A microservice has a single folder that contains its logic, and its internals are _truly_ encapsulated behind an API.  A domain within a monolith, under the MVC style, has to be discovered across multiple folders commingled with other domains, and its internals are exposed to other coexisting domains.
 
-The conclusion is that the _real_ problem is not with language modules and function dispatch.  It is that **MVC,** as an architecture, is not designed to encapsulate domain systems in a way that is compatible with organizational scale.  Which leads us to the question: can we design an architecture that yields the encapsulation benefits of microservices while retaining the operational characteristics of a monolith? and even more intriguingly, can we make it so that we can _smoothly change how systems communicate_ and getting the benefits of _both_ architectures wherever they are most needed?
+Our conclusion from this is that enabling organization scale should be possible with language modules and function dispatch.  The problem has been that **MVC,** as an architecture, was not designed to encapsulate domain systems in a way that is compatible with organizational scale.  Which leads us to the question: can we design an architecture that yields the encapsulation benefits of microservices while retaining the operational characteristics of a monolith? and even more intriguingly, can we make it so that we can _smoothly change how systems communicate_ and getting the benefits of _both_ architectures wherever they are most needed?
 
 ## Prior Art
 

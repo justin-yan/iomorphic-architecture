@@ -20,7 +20,7 @@ When an organization uses an Isolation Mechanism, they _also_ choose the **Commu
 There are a few critical observations to make here:
 
 1. There is no such thing as a "universally correct" Isolation Mechanism.  Each mechanism will have advantages and disadvantages, and for each system, an organization should select the mechanism that best meets their needs.  This is often a decision that turns on non-technical factors: which technologies will empower individuals and teams to effectively solve problems that matter?
-2. Just as two systems may want two different isolation mechanisms, a single system at _two different times_ may want two different isolation mechanisms.  As the world changes, a system may need to evolve, split, or isolate in order to accomodate changing requirements, and an architecture should facilitate **the migration of a system to different isolation mechanisms**.
+2. Just as two systems may want two different isolation mechanisms, a single system at _two different times_ may want two different isolation mechanisms.  As the world changes, a system may need to evolve, split, or isolate in order to accommodate changing requirements, and an architecture should facilitate **the migration of a system to different isolation mechanisms**.
 
 There are a huge variety of case studies from around the internet that illustrate this point:
 
