@@ -6,14 +6,14 @@ description: 'Status: Rough Draft'
 
 The Iomorphic Architecture is an application _****_architecture ****designed to be an alternative to MVC and Microservices.  If you're tired of dealing with hard-to-change Monoliths or having debates about "how big should a Microservice be?", the Iomorphic Architecture gives you a way to seamlessly blend the best of both worlds so you can focus on your real problems.
 
-Very generally, an architecture needs to provide the means for you to **express a domain**, and to **wire domains together**.  Microservices, as an example, gives you a "Service" as the unit of modeling for a domain, while also coupling it to a networked HTTP call for wiring two domains together.
+An architecture should provide the means for you to **express a domain**, and to **wire domains together**.  Microservices, as an example, gives you a "Service" as the unit of modeling for a domain, while also coupling it to a networked HTTP call for wiring two domains together.  This has one major problem, however, which is that _HTTP_ as a communication technology imposes certain constraints in terms of _size_, which means that how you _model_ your domains is being influenced \(and even dictated\) by how your domains _communicate_ with each other.
 
-The Iomorphic Architecture exists for a specific use case: _early lifecycle systems_ that expect to _grow quickly_.  In this niche, there are two problems that frequently occur:
+The Iomorphic Architecture seeks to provide this functionality \(expressing a domain, wiring domains together\) while solving for two problems that will inevitably happen in every system:
 
 1. You draw the wrong boundaries for your domains.
 2. The technologies you use to wire domains together needs to change over time.
 
-The Iomorphic Architecture has the goal to provide clear mechanisms for both expressing and wiring your domains together, while also making it as easy as possible to **evolve** both the boundaries of your domains and the specific technologies used to wire those domains together.  This is accomplished through two key principles:
+This is done by making it as easy as possible to **evolve** both the boundaries of your domains and the specific technologies used to wire those domains together, which leads to the two key principles:
 
 1. **Unified Modeling.**  _All domains_ are expressed in the same way, which we call an **Iomorph**.  This applies no matter how big, small, or numerous you want them to be - and indeed, we place no constraints on _how you subdivide your domains_ - whatever works best for your problem is what you should do.  They must only adhere to the **Iomorph** conventions so that it is _easy to change them_.
 2. **Isomorphic Communication**.  The business logic of an **Iomorph** is not allowed to depend on _any specifics of how it communicates with other Iomorphs_.  Specifically, an Iomorph communicates with others through **Interface Ports**, which cannot leak any information \(such as whether it's going over the network, HTTP response codes, etc.\).  This gives us a structured way to have two Iomorphs communicate, while making it as easy as possible to change this technology choice in the future if necessary.
