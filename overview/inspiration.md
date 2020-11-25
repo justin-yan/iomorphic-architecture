@@ -39,7 +39,8 @@ Our conclusion from this is that enabling organization scale should be possible 
 There is no doubt that this architecture borrows almost all of its ideas from other architectures that have come before it:
 
 * OOP and SOLID provide much of the language around **encapsulation** that is such a major focus, but need to be generalized beyond the boundary of a process.
-* Erlang, Akka, and the Actor Model introduce the concept of **Location Transparency**, which is a direct inspiration of our principle "Isomorphic under Isolation", but you then mostly see MVC monoliths being built on top of these frameworks, suggesting we need a different _architectural_ approach to realize the full potential.
+* Erlang, Akka, and the Actor Model introduce the concept of **Location Transparency**, which is a direct inspiration of our principle "Isomorphic Communication".
+  * Indeed, an Actor runtime is a great implementation choice for the Iomorphic architecture, but is not by itself sufficient, as the prevalence of MVC monoliths being built on top of these frameworks suggests.
 * Finally, the Hexagonal and Clean Architectures, with the illustration of the **domain core**, provided the final piece of the puzzle for this architecture, and are almost exactly how Atomic Iomorphs are expected to be implemented.  However, while these architectures provide more flexible functional layering than MVC, they still don't solve the problem of multiple colocated domain services needing to isolate from each other.
 
 More than anything else, this architecture is a synthesis of these many great ideas into a single approach to enable rapid, iterative, and flexible development of complex back-end systems.

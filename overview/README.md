@@ -1,16 +1,5 @@
 # Overview
 
-Throughout this reference, we'll use example projects to orient our discussion:
-
-* TODO
-
-This reference is organized in the following major sections:
-
-* Overview: how to read and use this reference, what the high-level ideas are, and the necessary background information.
-* Atomic: how to build a single system compatible with the architecture.
-* Composition: how to stitch various systems together.
-* Evolution: how to coordinate change across systems in order to safely modify behavior.
-
 ## Systems and Iomorphs
 
 The key perspective that acts as the foundation for the Iomorphic Architecture is the idea of a _domain system_.  Eric Evans, in Domain-Driven Design, originates this idea of having code follow a business domain closely, but the idea is more easily illustrated in the Hexagonal Architecture:
@@ -21,16 +10,21 @@ The point, of course, is that no matter how a system communicates with other sys
 
 ![](../.gitbook/assets/comparison.png)
 
-The Iomorphic Architecture recognizes this structure and seeks to use it to solve the problems organizations face as their systems grow and become more inherently complex:
+The usefulness of this structure becomes more apparent when we consider the problems organizations face as their systems grow and become more inherently complex over time:
 
 1. You will need to have more than one domain system.
 2. You will make mistakes when it comes to drawing your system boundaries.
 3. Technology choices you make will inevitably become outdated as the world changes.
 
-The Iomorphic Architecture starts with these problems, and then asks: how can we resolve these problems while enabling low overhead and high flexibility at high organizational scale?  This results in the two core principles of the architecture:
+The Iomorphic Architecture seeks to provide the core benefits of an application architecture: 
+
+* A way to express domains.
+* A way to wire them together.
+
+Simultaneously, we seek to provide this functionality in a way that the core organizational problems from above are also resolved: how can domain and technology evolution be made easy and flexible at high organizational scale?  This results in the two core principles of the architecture:
 
 1. **Unified Modeling.**  Scaling an organization _requires_ the ability to encapsulate domains, but having the same building block to model all domains regardless of their size or place makes it easy to deal with the inevitable mistakes you'll make drawing their boundaries.
-2. **Isomorphic Communication**.  More importantly, specific technology choices for how systems should communicate and be isolated will inevitably become outdated, and any migration will require the coexistence of multiple such technologies.  \(A simple proof: do you use both function dispatch and HTTP?\)  Preserving the ability to fix mistakes _requires_ decoupling how you _model_ your systems from how you _wire_ your systems together - otherwise, every modeling mistake will involve painstaking work changing function calls to HTTP dispatch.  The architecture does not dictate _specific_ technology choices, only that they not leak into your domain systems.
+2. **Isomorphic Communication**.  More importantly, specific technology choices for how systems should communicate and be isolated will inevitably become outdated, and any migration will require the coexistence of multiple such technologies.  \(A simple proof: do you use both function dispatch and HTTP?\)  Separating how you _model_ your systems from how you _wire_ your systems together is what fundamentally preserves your ability to easily change these technologies.  Otherwise, every technology change also _implicitly becomes a modeling change_.
 
 To fully illustrate how this would work:
 
