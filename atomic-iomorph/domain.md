@@ -60,6 +60,7 @@ An important group of types for Iomorphs is the Error Hierarchy.  In particular,
     * **NonretriableError** - there is some known fatal error deterministically causing issues.
   * **ClientError**
     * **BadRequestError** - the caller has made an invalid request that needs to be corrected in some way.
+    * **NotFoundError** - the resource the caller wants to locate cannot be found.
     * **StateConflictError** - the request is fine, but there is some known, stateful reason the request hasn't succeed which needs to be resolved.
 
 All additional custom domain errors should then extend from one of these.
