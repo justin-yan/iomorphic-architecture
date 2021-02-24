@@ -6,12 +6,12 @@ description: 'Status: Rough Draft'
 
 The Iomorphic Architecture is an application _****_architecture ****designed to be an alternative to MVC and Microservices.  If you're tired of dealing with hard-to-change Monoliths or having debates about "how big should a Microservice be?", the Iomorphic Architecture gives you a way to seamlessly blend the best of both worlds so you can focus on your real problems.
 
-An architecture should provide the means for you to **express a domain**, and to **wire domains together**.  Microservices, as an example, gives you a "Service" as the unit of modeling for a domain, while also coupling it to a networked HTTP call for wiring two domains together.  This has one major problem, however, which is that _HTTP_ as a communication technology imposes certain constraints in terms of _size_, which means that how you _model_ your domains is being influenced \(and even dictated\) by how your domains _communicate_ with each other.
+An architecture should provide the means for you to **express a domain**, and to **wire domains together**.  Microservices, as an example, gives you a "Service" as the unit of modeling for a domain, while also coupling it to a networked HTTP call for wiring two domains together.  The main problem is that using HTTP as your exclusive communications technology strongly skews how you _model_ your domains as a result of the technology choice for how your domains _communicate_ with each other.
 
 The Iomorphic Architecture seeks to provide this functionality \(expressing a domain, wiring domains together\) while solving for two problems that will inevitably happen in every system:
 
 1. You draw the wrong boundaries for your domains.
-2. The technologies you use to wire domains together needs to change over time.
+2. The technologies you use to wire domains together change over time.
 
 This is done by making it as easy as possible to **evolve** both the boundaries of your domains and the specific technologies used to wire those domains together, which leads to the two key principles:
 

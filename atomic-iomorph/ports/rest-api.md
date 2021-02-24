@@ -23,13 +23,17 @@ Examples:
         ...
 ```
 
-## Infrastructure Concerns
+## General Infrastructure
 
-* Validation.  Handle serialization, deserialization, and ExceptionMapping explicitly.
-* Observability.  It's important to convert paths, headers, request/response bodies into the "inputs" and "outputs" that get captured by your observability substrate, and to do so in a structured way.
-* Generation.  Documentation and Client SDKs should be generated _from_ the API specification itself.
-* Auth/Auth, Security, and RESTAPI-specific protections
-* HTTP protocol concerns: Disabling or enabling cache-control, compression, keep-alive/timeouts, content negotiation/unicode/language negotiation/time formatting
+As one of the main sources of inbound traffic, this port has many infrastructure concerns to implement, and it typically requires the implementation of custom middleware prior to and after response handling business logic for all major observability concerns.
+
+* **access\_logs**: Conventionally includes all of the important span-tracking metadata but also includes:
+  * Requester IP chain
+  * HTTP protocol, method, URI, query params, request size in bytes
+  * HTTP Response code, duration in milliseconds, response size in bytes
+* **documentation**: Your typesystem should generate an OpenAPI specification which can then power redoc or swagger-doc.
+
+
 
 ## API Design
 
@@ -45,7 +49,12 @@ Examples:
 
 ## Errors
 
-Errors should be mapped in fairly straightforward fashion:
+Errors don't _have_ to be modeled with Exceptions, but for languages with them, this is generally convenient because there will be _some_ root exception handler that must understand how to translate uncaught exceptions into responses to the client.  With that in mind, it's generally convenient to have one set of mappings to responses, but the key is that however you model them, they should:
+
+1. Show up as additional response types in auto-generated docs.
+2. Be captured and managed by custom middleware so that you can emit unhandled originating exceptions to a base handler.
+
+With that in mind, this is a fairly straightforward mapping:
 
 * Every Domain exception class should have its own unique response code so clients can handle polymorphism appropriately.
 * All domain exceptions should be mapped to an appropriate wire payload
