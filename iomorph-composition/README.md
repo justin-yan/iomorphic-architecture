@@ -13,12 +13,25 @@ Examples:
 * TODO
 
 ```text
-/<rootiomorph>
-    <rootiomorph contents>
-    /<childiomorph1>
-        /<grandchildiomorph1>
-    /<childiomorph2>
+/<rootiomorphname>
+    /iomorph
+        <rootiomorph contents>
+        Dockerfile
+        Makefile
+        src/
+        tests/
+        docker-compose.yml
+        ci.yml
+        runtime-app-def.yml
+        etc.
+    /<childiomorph1name>
+        /iomorph
+            <childiomorph1 contents>
+        /<grandchildiomorph1name>
+    /<childiomorph2name>
 /libraries
+/images
+/infra-as-code
 ```
 
 From an organization perspective, the Iomorphic Architecture is quite simple:
