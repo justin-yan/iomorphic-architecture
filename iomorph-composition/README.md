@@ -42,3 +42,20 @@ From an organization perspective, the Iomorphic Architecture is quite simple:
 4. Peer Iomorphs sit alongside each other in their parent's folder
 5. Each Iomorph may _only_ interact with the **public interfaces** of its children, peers, parents, and the infrastructure iomorphs of _any ancestor._
 
+In order to stitch these all together, it's important to define your _workflow steps_, and ensure there is a clean interface that ensures they are performed efficiently.  For example:
+
+* local\_dev:
+  * service\_provisioning
+  * verification \(lint, typecheck, test, autoformat\)
+* review:
+  * verification + integration\_test
+* build:
+  * production\_artifact
+  * docgen
+  * sdkgen
+* delivery:
+  * version\_registry
+  * observability\_namespacing
+
+Each iomorph then needs to implement the relevant interface \(a makefile command, a docker-compose.yml file, etc.\) to ensure it participates in the correct workflow steps.
+
